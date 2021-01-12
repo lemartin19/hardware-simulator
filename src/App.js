@@ -1,5 +1,4 @@
 import "./App.css";
-import "./Gates.css";
 import Workspace from "./Workspace";
 
 const App = () => (

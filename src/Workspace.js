@@ -3,7 +3,7 @@ import { Gate, Out, Source } from "./Gates";
 const Workspace = () => (
   <div className="Workspace">
     <Out val={0}>
-      <Gate name="And">
+      <Gate name="AND">
         <Source val={0} />
         <Source val={1} />
       </Gate>
