@@ -1,4 +1,4 @@
-import { Gate, Out, Source } from "./Gates";
+import { Gate, Out, Source } from "./gates/Gates";
 
 const Workspace = () => (
   <div className="Workspace">
