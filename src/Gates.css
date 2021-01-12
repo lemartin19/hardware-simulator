@@ -1,0 +1,26 @@
+.unit {
+  border: 0.5vh solid #ff00f0;
+  border-radius: 15%;
+  margin: 1vh;
+  padding: 2vh;
+}
+
+.Not {
+  border-color: #ff0000;
+}
+
+.And {
+  border-color: #00ff00;
+}
+
+.Or {
+  border-color: #0000ff;
+}
+
+.Xor {
+  border-color: #ff9900;
+}
+
+.Source {
+  border-color: #ffff00;
+}

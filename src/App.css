@@ -2,7 +2,7 @@
   text-align: center;
   background-color: #000000;
   min-height: 100vh;
-  font-size: calc(10px + 2vmin);
+  font-size: 22px;
   color: yellow;
 }
 
@@ -11,4 +11,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }

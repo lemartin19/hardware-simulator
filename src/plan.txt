@@ -1,0 +1,27 @@
+MODEL
+ + parses the commands typed in to the display components
+ + calculates the final result to display in "out"
+
+VIEW
+ + each new gate / piece of logic takes the inputs as children
+ + responsible for drawing a line to the children
+ e.g.
+  <Out>
+    <And>
+      <Source val={0} />
+      <Source val={1} />
+    </And>
+  </Out>
+  
+    [ 0 ]-- |
+            |--[AND]--[OUT]
+    [ 1 ]-- |
+
+
+CONTROLLER
+ + Toolbar
+    - clicking and dragging to place the components
+    - 
+ + type in commands -> display them
+   e.g. (and 1 (or 0 1))
+        (and (clk) !(reg a))
