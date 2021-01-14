@@ -2,7 +2,7 @@ export const HorizontalWire = () => (
   <div style={{ backgroundColor: "white", height: "0.5vh", width: "8vh" }} />
 );
 
-export const VerticalWire = ({ children }) => (
+export const VerticalWire = ({ marginTop, marginBottom, children }) => (
   <>
     <div
       style={{
@@ -19,8 +19,8 @@ export const VerticalWire = ({ children }) => (
         alignSelf: "normal",
         backgroundColor: "white",
         width: "0.5vh",
-        marginTop: `4.5vh`,
-        marginBottom: `4.5vh`,
+        marginTop: `${marginTop}vh`,
+        marginBottom: `${marginBottom}vh`,
       }}
     />
   </>

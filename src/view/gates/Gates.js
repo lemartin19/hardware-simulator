@@ -8,16 +8,20 @@ export const Source = ({ val }) => (
   </div>
 );
 
-const Input = ({ children }) => (
+const Input = ({ marginTop, marginBottom, children }) => (
   <>
-    <VerticalWire>{children}</VerticalWire>
+    <VerticalWire marginTop={marginTop} marginBottom={marginBottom}>
+      {children}
+    </VerticalWire>
     <HorizontalWire />
   </>
 );
 
-export const Gate = ({ name, children }) => (
+export const Gate = ({ name, marginTop, marginBottom, children }) => (
   <div className="flex-row">
-    <Input>{children}</Input>
+    <Input marginTop={marginTop} marginBottom={marginBottom}>
+      {children}
+    </Input>
     <div className={`${name} unit`}>{name}</div>
     <HorizontalWire />
   </div>
