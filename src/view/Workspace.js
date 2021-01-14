@@ -1,12 +1,10 @@
-import { Gate, Out, Source } from "./gates/Gates";
+import { ViewCompiler } from "../model/ViewCompiler";
+import { Out } from "./gates/Gates";
 
 const Workspace = () => (
   <div className="Workspace">
     <Out val={0}>
-      <Gate name="AND" marginTop={4.5} marginBottom={4.5}>
-        <Source val={0} />
-        <Source val={1} />
-      </Gate>
+      <ViewCompiler logic="(and 0 1)" />
     </Out>
   </div>
 );
