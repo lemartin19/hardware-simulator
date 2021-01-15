@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { parse } from "./parse";
-import * as ValueTypes from "./ValueTypes";
-import { Gate, Source } from "../view/gates/Gates";
+import { parse } from "../model/parse";
+import * as ValueTypes from "../model/ValueTypes";
+import { Gate, Source } from "./gates/Gates";
 
 const SourceCompiler = ({ values }) => {
   const vals = values.map(Number);
