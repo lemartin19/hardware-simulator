@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import * as parse from "../model/parse";
 import * as ValueTypes from "../model/ValueTypes";
 import { ViewCompiler } from "./ViewCompiler";
 
