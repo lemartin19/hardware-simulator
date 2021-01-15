@@ -44,7 +44,7 @@ const findCloseParen = (logic) => {
     if (logic.charAt(idx) === ")") count -= 1;
     idx++;
   }
-  return idx + 1;
+  return idx;
 };
 
 const parseInputs = (logic) => {
