@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import * as ValueTypes from "../model/ValueTypes";
 import { Gate, Source } from "./gates/Gates";
 
@@ -6,6 +7,9 @@ const SourceCompiler = ({ values }) => {
   return <Source val={vals[0]} />;
 };
 SourceCompiler.displayName = "SourceCompiler";
+SourceCompiler.propTypes = {
+  values: PropTypes.array.isRequired,
+};
 
 const GateCompiler = ({ name, values }) => (
   <Gate name={name}>
@@ -15,6 +19,10 @@ const GateCompiler = ({ name, values }) => (
   </Gate>
 );
 GateCompiler.displayName = "GateCompiler";
+GateCompiler.propTypes = {
+  name: ValueTypes.ValueTypesPropType.isRequired,
+  values: PropTypes.array.isRequired,
+};
 
 export const ViewCompiler = ({ parsed }) => {
   const { type, values } = parsed;
@@ -29,4 +37,7 @@ export const ViewCompiler = ({ parsed }) => {
       throw new Error("unexpected logical command");
   }
 };
-ViewCompiler.displayName = "Parser";
+ViewCompiler.displayName = "ViewCompiler";
+GateCompiler.propTypes = {
+  parsed: PropTypes.object.isRequired,
+};

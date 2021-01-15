@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useMemo } from "react";
 import { parse } from "../model/parse";
 import { ViewCompiler } from "./ViewCompiler";
@@ -14,5 +15,6 @@ const Workspace = ({ logic }) => {
   );
 };
 Workspace.displayName = "Workspace";
+Workspace.propTypes = { logic: PropTypes.string.isRequired };
 
 export default Workspace;
