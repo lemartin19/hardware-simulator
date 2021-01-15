@@ -1,7 +1,7 @@
 import * as ValueTypes from "./ValueTypes";
 
 const sourceParser = (inputs) => {
-  if (inputs !== "0" || inputs !== "1") {
+  if (inputs !== "0" && inputs !== "1") {
     throw new Error(
       `expected only single-bit, binary digit for source, got: ${inputs}`
     );

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { parse } from "./parse";
 import * as ValueTypes from "./ValueTypes";
 import { Gate, Source } from "../view/gates/Gates";
@@ -20,7 +21,8 @@ const GateCompiler = ({ name, values }) => {
 GateCompiler.displayName = "GateCompiler";
 
 export const ViewCompiler = ({ logic }) => {
-  const { type, values } = parse(logic);
+  const { type, values } = useMemo(() => parse(logic), [logic]);
+
   switch (type) {
     case ValueTypes.SOURCE:
       return <SourceCompiler values={values} />;
