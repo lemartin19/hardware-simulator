@@ -15,7 +15,7 @@ View.propTypes = {
 
 const Workspace = ({ parsed, result }) => (
   <div className="Workspace">
-    {parsed ? <View logic={parsed} result={result} /> : null}
+    {parsed ? <View parsed={parsed} result={result} /> : null}
   </div>
 );
 Workspace.displayName = "Workspace";

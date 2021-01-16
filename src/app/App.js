@@ -16,7 +16,7 @@ const App = () => {
   const { parsed, result, setLogic } = useApp();
   return (
     <div className="App">
-      <Workspace logic={parsed} result={result} />
+      <Workspace parsed={parsed} result={result} />
       <LogicInput setLogic={setLogic} />
     </div>
   );

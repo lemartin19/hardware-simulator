@@ -2,7 +2,7 @@ import "./LogicInput.css";
 import { useState, useCallback } from "react";
 
 const useLogicInput = ({ setLogic }) => {
-  const [formContent, setFormContent] = useState();
+  const [formContent, setFormContent] = useState("");
   const onChange = useCallback(({ target }) => {
     setFormContent(target.value);
   }, []);
