@@ -8,7 +8,8 @@ export const calcMargin = (idxFn, { type, values }) => {
     case ValueTypes.AND:
     case ValueTypes.OR:
       const idx = idxFn(values);
-      return 4.5 + calcMargin(idxFn, values[idx]);
+      const { marginTop, marginBottom } = calcMargins(values[idx]);
+      return 4.5 + Math.max(marginTop, marginBottom);
     default:
       throw new Error(`unexpected type in calcBottomMargin, got: ${type}`);
   }
