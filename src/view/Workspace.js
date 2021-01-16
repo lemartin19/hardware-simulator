@@ -1,24 +1,27 @@
 import PropTypes from "prop-types";
-import { useMemo } from "react";
-import { parse } from "../model/parse";
 import { ViewCompiler } from "./ViewCompiler";
 import { Out } from "./gates/Gates";
 
-const View = ({ logic }) => {
-  const parsed = useMemo(() => parse(logic), [logic]);
-  return (
-    <Out val={0}>
-      <ViewCompiler parsed={parsed} />
-    </Out>
-  );
+const View = ({ parsed, result }) => (
+  <Out val={result}>
+    <ViewCompiler parsed={parsed} />
+  </Out>
+);
+View.displayName = "View";
+View.propTypes = {
+  logic: PropTypes.object.isRequired,
+  result: PropTypes.number.isRequired,
 };
 
-const Workspace = ({ logic }) => {
-  return (
-    <div className="Workspace">{logic ? <View logic={logic} /> : null}</div>
-  );
-};
+const Workspace = ({ parsed, result }) => (
+  <div className="Workspace">
+    {parsed ? <View logic={parsed} result={result} /> : null}
+  </div>
+);
 Workspace.displayName = "Workspace";
-Workspace.propTypes = { logic: PropTypes.string.isRequired };
+Workspace.propTypes = {
+  logic: PropTypes.object.isRequired,
+  result: PropTypes.number.isRequired,
+};
 
 export default Workspace;
