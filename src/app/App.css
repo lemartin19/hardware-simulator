@@ -1,15 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: #000000;
   min-height: 100vh;
   font-size: 22px;
   color: yellow;
-}
-
-.Workspace {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
