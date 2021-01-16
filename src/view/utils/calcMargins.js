@@ -1,6 +1,6 @@
 import * as ValueTypes from "../../model/ValueTypes";
 
-export const calcMargin = (idxFn, { type, values }) => {
+const calcMargin = (idxFn, { type, values }) => {
   switch (type) {
     case ValueTypes.SOURCE:
       return 0;

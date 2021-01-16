@@ -42,6 +42,6 @@ export const ViewCompiler = ({ parsed }) => {
   }
 };
 ViewCompiler.displayName = "ViewCompiler";
-GateCompiler.propTypes = {
+ViewCompiler.propTypes = {
   parsed: PropTypes.object.isRequired,
 };
