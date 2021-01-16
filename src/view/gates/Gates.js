@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import "./Gates.css";
 import { HorizontalWire, VerticalWire } from "../wires/Wires";
-import { ValueTypesPropType } from "../../model/ValueTypes";
 
 export const Source = ({ val }) => (
   <div className="flex-row">
@@ -27,12 +26,12 @@ Input.propTypes = {
   marginTop: PropTypes.number.isRequired,
 };
 
-export const Gate = ({ name, marginTop, marginBottom, children }) => (
+export const Gate = ({ type, marginTop, marginBottom, children }) => (
   <div className="flex-row">
     <Input marginTop={marginTop} marginBottom={marginBottom}>
       {children}
     </Input>
-    <div className={`${name} unit`}>{name}</div>
+    <div className={`${type} unit`}>{type}</div>
     <HorizontalWire />
   </div>
 );
@@ -41,7 +40,7 @@ Gate.propTypes = {
   children: PropTypes.node.isRequired,
   marginBottom: PropTypes.number.isRequired,
   marginTop: PropTypes.number.isRequired,
-  name: ValueTypesPropType.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export const Out = ({ val, children }) => (
