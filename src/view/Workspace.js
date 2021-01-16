@@ -1,3 +1,4 @@
+import "./Workspace.css";
 import PropTypes from "prop-types";
 import { ViewCompiler } from "./ViewCompiler";
 import { Out } from "./gates/Gates";
