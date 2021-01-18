@@ -1,13 +1,12 @@
 import * as ValueTypes from "./ValueTypes";
 
 const sourceParser = (inputs) => {
-  if (inputs !== "0" && inputs !== "1") {
-    throw new Error(
-      `expected only single-bit, binary digit for source, got: ${inputs}`
-    );
+  const inputArr = inputs.split("");
+  if (inputArr.some((input) => input !== "0" && input !== "1")) {
+    throw new Error(`expected only binary digits in source, got: ${inputs}`);
   }
 
-  return [Number(inputs)];
+  return inputArr.map(Number);
 };
 
 const notParser = (inputs) => {

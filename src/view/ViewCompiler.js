@@ -4,8 +4,8 @@ import { Gate, Source } from "./gates/Gates";
 import { calcMargins } from "./utils/calcMargins";
 
 const SourceCompiler = ({ values }) => {
-  const vals = values.map(Number);
-  return <Source val={vals[0]} />;
+  const vals = values.join("");
+  return <Source val={vals} />;
 };
 SourceCompiler.displayName = "SourceCompiler";
 SourceCompiler.propTypes = {
