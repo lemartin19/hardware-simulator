@@ -11,14 +11,18 @@ export const Source = ({ val }) => (
 Source.displayName = "Source";
 Source.propTypes = { val: PropTypes.oneOf([0, 1]).isRequired };
 
-const Input = ({ marginTop, marginBottom, children }) => (
-  <>
-    <VerticalWire marginTop={marginTop} marginBottom={marginBottom}>
-      {children}
-    </VerticalWire>
-    <HorizontalWire />
-  </>
-);
+const Input = ({ marginTop, marginBottom, children }) => {
+  return children.length <= 1 ? (
+    children
+  ) : (
+    <>
+      <VerticalWire marginTop={marginTop} marginBottom={marginBottom}>
+        {children}
+      </VerticalWire>
+      <HorizontalWire />
+    </>
+  );
+};
 Input.displayName = "Input";
 Input.propTypes = {
   children: PropTypes.node.isRequired,
