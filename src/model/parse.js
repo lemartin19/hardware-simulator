@@ -10,24 +10,29 @@ const sourceParser = (inputs) => {
 };
 
 const notParser = (inputs) => {
-  if (inputs.length !== 1)
-    throw new Error(`expected only 1 input to 'not', got: ${inputs.length}`);
+  if (inputs.length !== 1) {
+    throw new Error(`expected 1 input to 'not', got: ${inputs.length}`);
+  }
 
   return inputs.map(parse);
 };
 
 const andParser = (inputs) => {
-  if (inputs.length !== 2)
+  if (inputs.length < 2) {
     throw new Error(
-      `expected exactly 2 inputs to 'and', got: ${inputs.length}`
+      `expected at least 2 inputs to 'and', got: ${inputs.length}`
     );
+  }
 
   return inputs.map(parse);
 };
 
 const orParser = (inputs) => {
-  if (inputs.length !== 2)
-    throw new Error(`expected exactly 2 inputs to 'or', got: ${inputs.length}`);
+  if (inputs.length < 2) {
+    throw new Error(
+      `expected at least 2 inputs to 'or', got: ${inputs.length}`
+    );
+  }
 
   return inputs.map(parse);
 };
