@@ -8,6 +8,7 @@ const calcMargin = (idxFn, { type, values }) => {
     case ValueTypes.NOT:
     case ValueTypes.AND:
     case ValueTypes.OR:
+    case ValueTypes.XOR:
       const idx = idxFn(values);
       const { marginTop, marginBottom } = calcMargins(values[idx]);
       const addedMargin = type === ValueTypes.NOT ? 0 : 4;

@@ -43,6 +43,7 @@ export const ViewCompiler = ({ parsed }) => {
     case ValueTypes.NOT:
     case ValueTypes.AND:
     case ValueTypes.OR:
+    case ValueTypes.XOR:
       return <GateCompiler type={type} values={values} />;
     case ValueTypes.CLOCK:
       return <ClockCompiler />;
