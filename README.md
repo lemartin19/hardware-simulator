@@ -5,6 +5,10 @@ the view from the input provided at the bottom of the screen.
 
 # Future Features
 
+- [ ] XOR gate
+    - [X] Parser
+    - [ ] Calculator
+    - [ ] Gate
 - [ ] Multibit inputs
     - [ ] Parser
     - [ ] Calculator

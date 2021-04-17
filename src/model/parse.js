@@ -17,20 +17,10 @@ const notParser = (inputs) => {
   return inputs.map(parse);
 };
 
-const andParser = (inputs) => {
+const multiInputGateParser = (name, inputs) => {
   if (inputs.length < 2) {
     throw new Error(
-      `expected at least 2 inputs to 'and', got: ${inputs.length}`
-    );
-  }
-
-  return inputs.map(parse);
-};
-
-const orParser = (inputs) => {
-  if (inputs.length < 2) {
-    throw new Error(
-      `expected at least 2 inputs to 'or', got: ${inputs.length}`
+      `expected at least 2 inputs to '${name}', got: ${inputs.length}`
     );
   }
 
@@ -85,9 +75,20 @@ export const parse = (logic) => {
     case 'not':
       return { type: ValueTypes.NOT, values: notParser(inputs) };
     case 'and':
-      return { type: ValueTypes.AND, values: andParser(inputs) };
+      return {
+        type: ValueTypes.AND,
+        values: multiInputGateParser('and', inputs),
+      };
     case 'or':
-      return { type: ValueTypes.OR, values: orParser(inputs) };
+      return {
+        type: ValueTypes.OR,
+        values: multiInputGateParser('or', inputs),
+      };
+    case 'xor':
+      return {
+        type: ValueTypes.XOR,
+        values: multiInputGateParser('xor', inputs),
+      };
     case 'clk':
       return { type: ValueTypes.CLOCK, values: clkParser(inputs) };
     default:

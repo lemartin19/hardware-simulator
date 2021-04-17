@@ -30,8 +30,8 @@ describe('/model/parse', () => {
     });
   });
 
-  describe('gates', () => {
-    test('and with source inputs', () => {
+  describe('gate', () => {
+    test('with source inputs', () => {
       const { type, values } = parse('(and 0 1)');
       expect(type).toBe(ValueTypes.AND);
       expect(values.length).toBe(2);
@@ -40,8 +40,8 @@ describe('/model/parse', () => {
       });
     });
 
-    test('gate with gate inputs', () => {
-      const { type, values } = parse('(or (and 1 (not 0)) (or 1 1))');
+    test('with gate inputs', () => {
+      const { type, values } = parse('(or (and 1 (not 0)) (xor 1 1))');
       expect(type).toBe(ValueTypes.OR);
       expect(values.length).toBe(2);
       expect(values[0].type).toBe(ValueTypes.AND);
@@ -53,7 +53,8 @@ describe('/model/parse', () => {
         values[0].values[1].values[0].values,
         0
       );
-      expect(values[1].type).toBe(ValueTypes.OR);
+      expect(values[1].type).toBe(ValueTypes.XOR);
+      testSourceVal(values[1].values[0].type, values[1].values[0].values, 1);
     });
   });
 

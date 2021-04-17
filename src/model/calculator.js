@@ -26,6 +26,7 @@ const GATE_FUNCTION = {
   [ValueTypes.NOT]: (values) => values[0].map((val) => (val ? 0 : 1)),
   [ValueTypes.AND]: combineValues((a, b) => a && b),
   [ValueTypes.OR]: combineValues((a, b) => a || b),
+  [ValueTypes.XOR]: combineValues((a, b) => (a ? (b ? 0 : 1) : b)),
 };
 
 export const calculate = (parsed, clockValue) => {
@@ -36,6 +37,7 @@ export const calculate = (parsed, clockValue) => {
     case ValueTypes.NOT:
     case ValueTypes.AND:
     case ValueTypes.OR:
+    case ValueTypes.XOR:
       const calculatedInputs = values.map((input) =>
         calculate(input, clockValue)
       );

@@ -94,6 +94,53 @@ describe('/model/calculator', () => {
     });
   });
 
+  describe('xor', () => {
+    test('both on is off', () => {
+      const result = calculate(
+        {
+          type: ValueTypes.XOR,
+          values: [
+            { type: ValueTypes.SOURCE, values: [1] },
+            { type: ValueTypes.SOURCE, values: [1] },
+          ],
+        },
+        1
+      );
+      expect(result.length).toBe(1);
+      expect(result[0]).toBe(0);
+    });
+
+    test('both off is off', () => {
+      const result = calculate(
+        {
+          type: ValueTypes.XOR,
+          values: [
+            { type: ValueTypes.SOURCE, values: [0] },
+            { type: ValueTypes.SOURCE, values: [0] },
+          ],
+        },
+        1
+      );
+      expect(result.length).toBe(1);
+      expect(result[0]).toBe(0);
+    });
+
+    test('one on is on', () => {
+      const result = calculate(
+        {
+          type: ValueTypes.XOR,
+          values: [
+            { type: ValueTypes.SOURCE, values: [0] },
+            { type: ValueTypes.SOURCE, values: [1] },
+          ],
+        },
+        1
+      );
+      expect(result.length).toBe(1);
+      expect(result[0]).toBe(1);
+    });
+  });
+
   describe('and', () => {
     test('with clock on', () => {
       const result = calculate(
