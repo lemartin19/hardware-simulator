@@ -10,9 +10,10 @@ const calcMargin = (idxFn, { type, values }) => {
     case ValueTypes.OR:
       const idx = idxFn(values);
       const { marginTop, marginBottom } = calcMargins(values[idx]);
-      return 4 + Math.max(marginTop, marginBottom);
+      const addedMargin = type === ValueTypes.NOT ? 0 : 4;
+      return addedMargin + Math.max(marginTop, marginBottom);
     default:
-      throw new Error(`unexpected type in calcBottomMargin, got: ${type}`);
+      throw new Error(`unexpected type in calcMargin, got: ${type}`);
   }
 };
 

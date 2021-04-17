@@ -23,7 +23,7 @@ const combineValues = (combiner) => (values) => {
   );
 };
 const GATE_FUNCTION = {
-  [ValueTypes.NOT]: (values) => values.map((val) => (val ? 0 : 1)),
+  [ValueTypes.NOT]: (values) => values[0].map((val) => (val ? 0 : 1)),
   [ValueTypes.AND]: combineValues((a, b) => a && b),
   [ValueTypes.OR]: combineValues((a, b) => a || b),
 };
