@@ -8,12 +8,11 @@ the view from the input provided at the bottom of the screen.
 - [ ] Multibit inputs
     - [ ] Parser
     - [ ] Calculator
-- [ ] Clock (no inputs, only out an alternating value) - e.g. (and (clk) 1)
-    - [ ] Parser
-    - [ ] Calculator
-    - [ ] Gate
+- [X] Clock (no inputs, only out an alternating value) - e.g. (and (clk) 1)
+    - [X] Parser
+    - [X] Calculator
+    - [X] Gate
 - [ ] Control the clock timing with a new input (how many seconds between each clock tick)
-    - [ ] Calculator
     - [ ] Form input
 - [ ] Register (takes in the value to save and value that controls when that save happens) - e.g. (and (reg (clk) (clk)))
     - [ ] Parser
