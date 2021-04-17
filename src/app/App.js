@@ -4,23 +4,37 @@ import Workspace from '../view/Workspace';
 import LogicInput from '../controller/LogicInput';
 import { parse } from '../model/parse';
 import { calculate } from '../model/calculator';
+import MaybeError from './MaybeError';
 
 const useApp = () => {
   const [logic, setLogic] = useState('');
-  const parsed = useMemo(() => (logic ? parse(logic) : null), [logic]);
+  const [error, setError] = useState(null);
+
+  const parsed = useMemo(() => {
+    try {
+      const parsedLogic = parse(logic);
+      setError(null);
+      return logic ? parsedLogic : null;
+    } catch (error) {
+      setError(error.message);
+      return null;
+    }
+  }, [logic]);
+
   const result = useMemo(() => {
     if (!parsed) return null;
     const calculated = calculate(parsed);
     return calculated.join('');
   }, [parsed]);
 
-  return { parsed, result, setLogic };
+  return { parsed, error, result, setLogic };
 };
 
 const App = () => {
-  const { parsed, result, setLogic } = useApp();
+  const { parsed, error, result, setLogic } = useApp();
   return (
     <div className="App">
+      <MaybeError>{error}</MaybeError>
       <Workspace parsed={parsed} result={result} />
       <LogicInput setLogic={setLogic} />
     </div>
