@@ -1,14 +1,29 @@
 import './App.css';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Workspace from '../view/Workspace';
 import LogicInput from '../controller/LogicInput';
 import { parse } from '../model/parse';
 import { calculate } from '../model/calculator';
 import MaybeError from './MaybeError';
+import { useDispatch, useSelector } from 'react-redux';
+import { getClockLength, getClockValue, tick } from '../store/clock';
+
+const useClock = () => {
+  const dispatch = useDispatch();
+  const clock = useSelector(getClockValue);
+  const clockLength = useSelector(getClockLength);
+
+  useEffect(() => {
+    setTimeout(() => dispatch(tick()), clockLength);
+  }, [dispatch, clock, clockLength]);
+
+  return { clock };
+};
 
 const useApp = () => {
   const [logic, setLogic] = useState('');
   const [error, setError] = useState(null);
+  const { clock } = useClock();
 
   const parsed = useMemo(() => {
     try {
@@ -23,9 +38,9 @@ const useApp = () => {
 
   const result = useMemo(() => {
     if (!parsed) return null;
-    const calculated = calculate(parsed);
+    const calculated = calculate(parsed, clock);
     return calculated.join('');
-  }, [parsed]);
+  }, [parsed, clock]);
 
   return { parsed, error, result, setLogic };
 };

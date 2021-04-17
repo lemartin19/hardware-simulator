@@ -1,4 +1,4 @@
-import * as ValueTypes from "./ValueTypes";
+import * as ValueTypes from './ValueTypes';
 
 const checkBitLengths = (values) => {
   const bitLengths = values.map((input) => input.length);
@@ -28,7 +28,7 @@ const GATE_FUNCTION = {
   [ValueTypes.OR]: combineValues((a, b) => a || b),
 };
 
-export const calculate = (parsed) => {
+export const calculate = (parsed, clockValue) => {
   const { type, values } = parsed;
   switch (type) {
     case ValueTypes.SOURCE:
@@ -36,9 +36,13 @@ export const calculate = (parsed) => {
     case ValueTypes.NOT:
     case ValueTypes.AND:
     case ValueTypes.OR:
-      const calculatedInputs = values.map(calculate);
+      const calculatedInputs = values.map((input) =>
+        calculate(input, clockValue)
+      );
       return GATE_FUNCTION[type](calculatedInputs);
+    case ValueTypes.CLOCK:
+      return [clockValue];
     default:
-      throw new Error("unexpected logical command");
+      throw new Error('unexpected logical command');
   }
 };

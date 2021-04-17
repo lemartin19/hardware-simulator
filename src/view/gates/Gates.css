@@ -8,7 +8,7 @@
 .unit {
   height: 6vh;
   width: 8vh;
-  border: 0.5vh solid #ff00f0;
+  border: 0.5vh solid;
   border-radius: 15%;
   margin: 1vh;
   display: flex;
@@ -30,6 +30,10 @@
 
 .XOR {
   border-color: #ff9900;
+}
+
+.CLOCK {
+  border-color: #ff00f0;
 }
 
 .SOURCE {

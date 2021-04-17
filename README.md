@@ -5,6 +5,9 @@ the view from the input provided at the bottom of the screen.
 
 # Future Features
 
+- [ ] Multibit inputs
+    - [ ] Parser
+    - [ ] Calculator
 - [ ] Clock (no inputs, only out an alternating value) - e.g. (and (clk) 1)
     - [ ] Parser
     - [ ] Calculator

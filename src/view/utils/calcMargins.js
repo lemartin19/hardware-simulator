@@ -3,6 +3,7 @@ import * as ValueTypes from '../../model/ValueTypes';
 const calcMargin = (idxFn, { type, values }) => {
   switch (type) {
     case ValueTypes.SOURCE:
+    case ValueTypes.CLOCK:
       return 0;
     case ValueTypes.NOT:
     case ValueTypes.AND:

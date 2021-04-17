@@ -30,7 +30,7 @@ const LogicInput = ({ setLogic }) => {
         className="mr-2"
       />
       <Button variant="light" type="submit">
-        View logic
+        View
       </Button>
     </Form>
   );
