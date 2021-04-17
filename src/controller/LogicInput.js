@@ -1,26 +1,40 @@
-import "./LogicInput.css";
-import { useState, useCallback } from "react";
+import './LogicInput.css';
+
+import { useState, useCallback } from 'react';
+import { Button, Form } from 'react-bootstrap';
 
 const useLogicInput = ({ setLogic }) => {
-  const [formContent, setFormContent] = useState("");
+  const [formContent, setFormContent] = useState('');
   const onChange = useCallback(({ target }) => {
     setFormContent(target.value);
   }, []);
-  const onSubmit = useCallback(() => {
-    setLogic(formContent);
-  }, [setLogic, formContent]);
+  const onSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      setLogic(formContent);
+    },
+    [setLogic, formContent]
+  );
   return { formContent, onChange, onSubmit };
 };
 
 const LogicInput = ({ setLogic }) => {
   const { formContent, onChange, onSubmit } = useLogicInput({ setLogic });
   return (
-    <div className="LogicInput">
-      <input type="text" id="logic" value={formContent} onChange={onChange} />
-      <input type="submit" onClick={onSubmit} />
-    </div>
+    <Form className="LogicInput p-2" onSubmit={onSubmit}>
+      <Form.Control
+        type="text"
+        id="logic"
+        value={formContent}
+        onChange={onChange}
+        className="mr-2"
+      />
+      <Button variant="light" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 };
-LogicInput.displayName = "LogicInput";
+LogicInput.displayName = 'LogicInput';
 
 export default LogicInput;

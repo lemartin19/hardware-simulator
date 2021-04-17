@@ -2,9 +2,5 @@
   display: inline-flex;
   margin-top: auto;
   align-self: center;
-  width: 20vw;
-  padding: 2vh;
-}
-.LogicInput > input {
-  margin-left: 1vw;
+  min-width: 20vw;
 }
