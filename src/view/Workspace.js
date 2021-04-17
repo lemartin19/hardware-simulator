@@ -1,17 +1,17 @@
-import "./Workspace.css";
-import PropTypes from "prop-types";
-import { ViewCompiler } from "./ViewCompiler";
-import { Out } from "./gates/Gates";
+import './Workspace.css';
+import PropTypes from 'prop-types';
+import { ViewCompiler } from './ViewCompiler';
+import { Out } from './gates/Gates';
 
 const View = ({ parsed, result }) => (
   <Out val={result}>
     <ViewCompiler parsed={parsed} />
   </Out>
 );
-View.displayName = "View";
+View.displayName = 'View';
 View.propTypes = {
-  logic: PropTypes.object.isRequired,
-  result: PropTypes.number.isRequired,
+  parsed: PropTypes.object.isRequired,
+  result: PropTypes.string.isRequired,
 };
 
 const Workspace = ({ parsed, result }) => (
@@ -19,10 +19,10 @@ const Workspace = ({ parsed, result }) => (
     {parsed ? <View parsed={parsed} result={result} /> : null}
   </div>
 );
-Workspace.displayName = "Workspace";
+Workspace.displayName = 'Workspace';
 Workspace.propTypes = {
-  logic: PropTypes.object.isRequired,
-  result: PropTypes.number.isRequired,
+  parsed: PropTypes.object,
+  result: PropTypes.string,
 };
 
 export default Workspace;

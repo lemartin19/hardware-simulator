@@ -10,7 +10,7 @@ export const Source = ({ val }) => (
   </div>
 );
 Source.displayName = 'Source';
-Source.propTypes = { val: PropTypes.oneOf([0, 1]).isRequired };
+Source.propTypes = { val: PropTypes.oneOf(['0', '1']).isRequired };
 
 const Input = ({ marginTop, marginBottom, children }) => {
   return children.length <= 1 ? (
@@ -66,5 +66,5 @@ export const Out = ({ val, children }) => (
 Out.displayName = 'Out';
 Out.propTypes = {
   children: PropTypes.node.isRequired,
-  val: PropTypes.oneOf([0, 1]).isRequired,
+  val: PropTypes.oneOf(['0', '1']).isRequired,
 };
