@@ -1,17 +1,17 @@
-import "./App.css";
-import { useState, useMemo } from "react";
-import Workspace from "../view/Workspace";
-import LogicInput from "../controller/LogicInput";
-import { parse } from "../model/parse";
-import { calculate } from "../model/calculator";
+import './App.css';
+import { useState, useMemo } from 'react';
+import Workspace from '../view/Workspace';
+import LogicInput from '../controller/LogicInput';
+import { parse } from '../model/parse';
+import { calculate } from '../model/calculator';
 
 const useApp = () => {
-  const [logic, setLogic] = useState("");
+  const [logic, setLogic] = useState('');
   const parsed = useMemo(() => (logic ? parse(logic) : null), [logic]);
   const result = useMemo(() => {
     if (!parsed) return null;
     const calculated = calculate(parsed);
-    return calculated.join("");
+    return calculated.join('');
   }, [parsed]);
 
   return { parsed, result, setLogic };
@@ -26,6 +26,6 @@ const App = () => {
     </div>
   );
 };
-App.displayName = "App";
+App.displayName = 'App';
 
 export default App;

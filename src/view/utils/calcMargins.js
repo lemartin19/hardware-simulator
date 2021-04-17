@@ -1,4 +1,4 @@
-import * as ValueTypes from "../../model/ValueTypes";
+import * as ValueTypes from '../../model/ValueTypes';
 
 const calcMargin = (idxFn, { type, values }) => {
   switch (type) {
@@ -9,7 +9,7 @@ const calcMargin = (idxFn, { type, values }) => {
     case ValueTypes.OR:
       const idx = idxFn(values);
       const { marginTop, marginBottom } = calcMargins(values[idx]);
-      return 4.5 + Math.max(marginTop, marginBottom);
+      return 4 + Math.max(marginTop, marginBottom);
     default:
       throw new Error(`unexpected type in calcBottomMargin, got: ${type}`);
   }
