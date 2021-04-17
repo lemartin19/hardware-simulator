@@ -39,5 +39,29 @@ describe('/model/parse', () => {
         testSourceVal(type, values, idx);
       });
     });
+
+    test('gate with gate inputs', () => {
+      const { type, values } = parse('(or (and 1 (not 0)) (or 1 1))');
+      expect(type).toBe(ValueTypes.OR);
+      expect(values.length).toBe(2);
+      expect(values[0].type).toBe(ValueTypes.AND);
+      expect(values[0].values.length).toBe(2);
+      testSourceVal(values[0].values[0].type, values[0].values[0].values, 1);
+      expect(values[0].values[1].type).toBe(ValueTypes.NOT);
+      testSourceVal(
+        values[0].values[1].values[0].type,
+        values[0].values[1].values[0].values,
+        0
+      );
+      expect(values[1].type).toBe(ValueTypes.OR);
+    });
+  });
+
+  describe('clock', () => {
+    test('has no values', () => {
+      const { type, values } = parse('(clk)');
+      expect(type).toBe(ValueTypes.CLOCK);
+      expect(values.length).toBe(0);
+    });
   });
 });
