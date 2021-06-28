@@ -14,10 +14,7 @@ const useClock = () => {
   const clockLength = useSelector(getClockLength);
 
   useEffect(() => {
-    setTimeout(() => {
-      console.log(`dispatching tick (clockLength: ${clockLength})`);
-      dispatch(tick());
-    }, clockLength);
+    setTimeout(() => dispatch(tick()), clockLength * 1000);
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, [dispatch, clock]);
 
