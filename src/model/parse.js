@@ -29,9 +29,7 @@ const multiInputGateParser = (name, inputs) => {
 
 const clkParser = (inputs) => {
   if (inputs.length !== 0) {
-    throw new Error(
-      `expected 0 inputs to 'clk', got: ${inputs.length}`
-    );
+    throw new Error(`expected 0 inputs to 'clk', got: ${inputs.length}`);
   }
 
   return [];

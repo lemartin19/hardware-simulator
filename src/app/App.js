@@ -23,15 +23,19 @@ const useClock = () => {
 
 const useApp = () => {
   const { clock } = useClock();
-  const { parsed, error } = useSelector(getParsed);
+  const { parsed, error: parsedError } = useSelector(getParsed);
 
-  const result = useMemo(() => {
-    if (!parsed) return null;
-    const calculated = calculate(parsed, clock);
-    return calculated.join('');
+  const { result, error: calculatedError } = useMemo(() => {
+    if (!parsed) return {};
+    try {
+      const calculated = calculate(parsed, clock);
+      return { result: calculated.join('') };
+    } catch (error) {
+      return { error: error.message };
+    }
   }, [parsed, clock]);
 
-  return { parsed, error, result };
+  return { parsed, error: parsedError || calculatedError, result };
 };
 
 const App = () => {
