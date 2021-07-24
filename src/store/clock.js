@@ -7,7 +7,7 @@ export const tick = createAction(TICK);
 export const setClockLength = createAction(SET_LENGTH);
 
 export const clockReducer = createReducer(
-  { value: 0, length: 1000 },
+  { value: 0, length: 1 },
   {
     [TICK]: (state) => ({ ...state, value: 1 - state.value }),
     [SET_LENGTH]: (state, { payload }) => ({ ...state, length: payload }),
