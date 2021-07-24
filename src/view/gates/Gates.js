@@ -1,5 +1,6 @@
 import './Gates.css';
 
+import React from 'react';
 import PropTypes from 'prop-types';
 import { HorizontalWire, VerticalWire } from '../wires/Wires';
 
@@ -16,12 +17,12 @@ const Input = ({ marginTop, marginBottom, children }) => {
   return children.length <= 1 ? (
     children
   ) : (
-    <>
+    <React.Fragment>
       <VerticalWire marginTop={marginTop} marginBottom={marginBottom}>
         {children}
       </VerticalWire>
       <HorizontalWire />
-    </>
+    </React.Fragment>
   );
 };
 Input.displayName = 'Input';

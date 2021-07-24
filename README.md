@@ -17,8 +17,8 @@ Start the simulator with `npm start`
     - [X] Parser
     - [X] Calculator
     - [X] Gate
-- [ ] Control the clock timing with a new input (how many seconds between each clock tick)
-    - [ ] Form input
+- [X] Control the clock timing with a new input (how many seconds between each clock tick)
+    - [X] Form input
 - [ ] Register (takes in the value to save and value that controls when that save happens) - e.g. (and (reg (clk) (clk)))
     - [ ] Parser
     - [ ] Calculator

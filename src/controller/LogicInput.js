@@ -1,9 +1,12 @@
 import './LogicInput.css';
 
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { setLogic } from '../store/parsed';
 
-const useLogicInput = ({ setLogic }) => {
+const useLogicInput = () => {
+  const dispatch = useDispatch();
   const [formContent, setFormContent] = useState('');
   const onChange = useCallback(({ target }) => {
     setFormContent(target.value);
@@ -11,15 +14,15 @@ const useLogicInput = ({ setLogic }) => {
   const onSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      setLogic(formContent);
+      dispatch(setLogic(formContent));
     },
-    [setLogic, formContent]
+    [dispatch, formContent]
   );
   return { formContent, onChange, onSubmit };
 };
 
-const LogicInput = ({ setLogic }) => {
-  const { formContent, onChange, onSubmit } = useLogicInput({ setLogic });
+const LogicInput = () => {
+  const { formContent, onChange, onSubmit } = useLogicInput();
   return (
     <Form className="LogicInput p-2" onSubmit={onSubmit}>
       <Form.Control
