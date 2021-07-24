@@ -1,8 +1,9 @@
 # Hardware Simulator
 
 Simulates hardwares from the "atom" size being a gate. Constructs 
-the view from the input provided at the bottom of the screen. 
+the view from the input provided at the bottom of the screen.
 
+Start the simulator with `npm start`
 # Future Features
 
 - [X] XOR gate
