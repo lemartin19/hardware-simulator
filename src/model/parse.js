@@ -30,7 +30,7 @@ const multiInputGateParser = (name, inputs) => {
 const clkParser = (inputs) => {
   if (inputs.length !== 0) {
     throw new Error(
-      `expected at least 2 inputs to 'or', got: ${inputs.length}`
+      `expected 0 inputs to 'clk', got: ${inputs.length}`
     );
   }
 
@@ -77,17 +77,17 @@ export const parse = (logic) => {
     case 'and':
       return {
         type: ValueTypes.AND,
-        values: multiInputGateParser('and', inputs),
+        values: multiInputGateParser(cmd, inputs),
       };
     case 'or':
       return {
         type: ValueTypes.OR,
-        values: multiInputGateParser('or', inputs),
+        values: multiInputGateParser(cmd, inputs),
       };
     case 'xor':
       return {
         type: ValueTypes.XOR,
-        values: multiInputGateParser('xor', inputs),
+        values: multiInputGateParser(cmd, inputs),
       };
     case 'clk':
       return { type: ValueTypes.CLOCK, values: clkParser(inputs) };
