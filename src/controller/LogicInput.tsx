@@ -1,6 +1,6 @@
 import './LogicInput.css';
 
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setLogic } from '../store/parsed';

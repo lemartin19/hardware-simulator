@@ -1,11 +1,19 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 export const HorizontalWire = () => (
   <div style={{ backgroundColor: 'white', height: '0.5vh', width: '8vh' }} />
 );
 
-export const VerticalWire = ({ marginTop, marginBottom, children }) => (
-  <React.Fragment>
+export const VerticalWire = ({
+  marginTop,
+  marginBottom,
+  children,
+}: {
+  marginTop: number;
+  marginBottom: number;
+  children: ReactNode[];
+}) => (
+  <>
     <div
       style={{
         display: 'flex',
@@ -25,5 +33,5 @@ export const VerticalWire = ({ marginTop, marginBottom, children }) => (
         marginBottom: `${marginBottom}vh`,
       }}
     />
-  </React.Fragment>
+  </>
 );

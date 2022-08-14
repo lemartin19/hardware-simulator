@@ -1,4 +1,3 @@
-import React from 'react';
 import ClockLength from './ClockLength';
 import LogicInput from './LogicInput';
 

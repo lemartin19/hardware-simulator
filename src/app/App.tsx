@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useMemo, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import Workspace from '../view/Workspace';
 import { calculate } from '../model/calculator';
 import MaybeError from './MaybeError';
@@ -31,14 +31,14 @@ const useApp = () => {
       const calculated = calculate(parsed, clock);
       return { result: calculated.join('') };
     } catch (error) {
-      return { error: error.message };
+      return { error: (error as Error).message };
     }
   }, [parsed, clock]);
 
   return { parsed, error: parsedError || calculatedError, result };
 };
 
-const App = () => {
+export const App = () => {
   const { parsed, error, result } = useApp();
   return (
     <div className="App">
@@ -49,5 +49,3 @@ const App = () => {
   );
 };
 App.displayName = 'App';
-
-export default App;

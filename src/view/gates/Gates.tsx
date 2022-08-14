@@ -1,38 +1,50 @@
 import './Gates.css';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import { PropsWithChildren, ReactNode } from 'react';
 import { HorizontalWire, VerticalWire } from '../wires/Wires';
+import { Command } from '../../model/Command';
 
-export const Source = ({ val }) => (
+export const Source = ({ val }: { val: string }) => (
   <div className="flex-row">
     <div className="SOURCE unit">{val}</div>
     <HorizontalWire />
   </div>
 );
 Source.displayName = 'Source';
-Source.propTypes = { val: PropTypes.oneOf(['0', '1']).isRequired };
 
-const Input = ({ marginTop, marginBottom, children }) => {
+const Input = ({
+  marginTop,
+  marginBottom,
+  children,
+}: {
+  marginTop: number;
+  marginBottom: number;
+  children: ReactNode[];
+}) => {
   return children.length <= 1 ? (
-    children
+    <>{children}</>
   ) : (
-    <React.Fragment>
+    <>
       <VerticalWire marginTop={marginTop} marginBottom={marginBottom}>
         {children}
       </VerticalWire>
       <HorizontalWire />
-    </React.Fragment>
+    </>
   );
 };
 Input.displayName = 'Input';
-Input.propTypes = {
-  children: PropTypes.node.isRequired,
-  marginBottom: PropTypes.number.isRequired,
-  marginTop: PropTypes.number.isRequired,
-};
 
-export const Gate = ({ type, marginTop, marginBottom, children }) => (
+export const Gate = ({
+  type,
+  marginTop,
+  marginBottom,
+  children,
+}: {
+  type: Command;
+  marginTop: number;
+  marginBottom: number;
+  children: ReactNode[];
+}) => (
   <div className="flex-row">
     <Input marginTop={marginTop} marginBottom={marginBottom}>
       {children}
@@ -42,30 +54,24 @@ export const Gate = ({ type, marginTop, marginBottom, children }) => (
   </div>
 );
 Gate.displayName = 'Gate';
-Gate.propTypes = {
-  children: PropTypes.node.isRequired,
-  marginBottom: PropTypes.number.isRequired,
-  marginTop: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-};
 
-export const Clock = ({ val }) => (
+export const Clock = ({ val }: { val: string }) => (
   <div className="flex-row">
     <div className="CLOCK unit">{val}</div>
     <HorizontalWire />
   </div>
 );
 Clock.displayName = 'Clock';
-Clock.propTypes = { val: PropTypes.oneOf([0, 1]).isRequired };
 
-export const Out = ({ val, children }) => (
+export const Out = ({
+  val,
+  children,
+}: PropsWithChildren<{
+  val: string;
+}>) => (
   <div className="flex-row">
     <div>{children}</div>
     <div className="OUT unit">{val}</div>
   </div>
 );
 Out.displayName = 'Out';
-Out.propTypes = {
-  children: PropTypes.node.isRequired,
-  val: PropTypes.oneOf(['0', '1']).isRequired,
-};
