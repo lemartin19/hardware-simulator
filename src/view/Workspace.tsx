@@ -11,7 +11,7 @@ const View = ({ parsed, result }: { parsed: Parsed; result: string }) => (
 );
 View.displayName = 'View';
 
-const Workspace = ({
+export const Workspace = ({
   parsed,
   result,
 }: {
@@ -23,5 +23,3 @@ const Workspace = ({
   </div>
 );
 Workspace.displayName = 'Workspace';
-
-export default Workspace;

@@ -1,8 +1,8 @@
 import './App.css';
 import { useMemo, useEffect } from 'react';
-import Workspace from '../view/Workspace';
+import { Workspace } from '../view/Workspace';
 import { calculate } from '../model/calculator';
-import MaybeError from './MaybeError';
+import { MaybeError } from './MaybeError';
 import { useDispatch, useSelector } from 'react-redux';
 import { getClockLength, getClockValue, tick } from '../store/clock';
 import { getParsed } from '../store/parsed';

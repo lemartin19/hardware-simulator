@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import Workspace from './Workspace';
-import * as ValueTypes from '../model/ValueTypes';
+import { Workspace } from './Workspace';
+import { Command } from '../model/Command';
 
 test('renders nothing if no parsed value', () => {
   const { container } = render(<Workspace />);

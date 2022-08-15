@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import * as ValueTypes from '../model/ValueTypes';
+import { Command } from '../model/Command';
 import { ViewCompiler } from './ViewCompiler';
 
 const SOURCE0 = {
-  type: ValueTypes.SOURCE,
+  type: Command.SOURCE,
   values: [0],
 };
 

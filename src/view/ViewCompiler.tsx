@@ -31,7 +31,7 @@ GateCompiler.displayName = 'GateCompiler';
 
 const ClockCompiler = () => {
   const clk = useSelector(getClockValue);
-  return <Clock val={clk} />;
+  return <Clock val={`${clk}`} />;
 };
 ClockCompiler.displayName = 'ClockCompiler';
 
