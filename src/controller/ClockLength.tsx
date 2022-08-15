@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { ChangeEventHandler, useCallback } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getClockLength, setClockLength } from '../store/clock';
@@ -6,7 +6,7 @@ import { getClockLength, setClockLength } from '../store/clock';
 const useClockLength = () => {
   const dispatch = useDispatch();
   const clockLength = useSelector(getClockLength);
-  const onChange = useCallback(
+  const onChange = useCallback<ChangeEventHandler<HTMLSelectElement>>(
     (event) => {
       event.preventDefault();
       const clockLength = Number(event.target.value);
@@ -33,5 +33,6 @@ const ClockLength = () => {
   );
 };
 ClockLength.displayName = 'ClockLength';
+ClockLength.useComponent = ClockLength;
 
 export default ClockLength;
