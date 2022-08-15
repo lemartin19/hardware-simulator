@@ -16,26 +16,26 @@
   align-items: center;
 }
 
-.NOT {
+.not {
   border-color: #ff0000;
 }
 
-.AND {
+.and {
   border-color: #00ff00;
 }
 
-.OR {
+.or {
   border-color: #0000ff;
 }
 
-.XOR {
+.xor {
   border-color: #ff9900;
 }
 
-.CLOCK {
+.clk {
   border-color: #ff00f0;
 }
 
-.SOURCE {
+.source {
   border-color: #ffff00;
 }

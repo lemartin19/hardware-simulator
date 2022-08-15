@@ -57,7 +57,7 @@ Gate.displayName = 'Gate';
 
 export const Clock = ({ val }: { val: string }) => (
   <div className="flex-row">
-    <div className="CLOCK unit">{val}</div>
+    <div className="clk unit">{val}</div>
     <HorizontalWire />
   </div>
 );
