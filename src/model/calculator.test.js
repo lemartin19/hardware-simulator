@@ -1,18 +1,18 @@
 import { calculate } from './calculator';
-import * as ValueTypes from './ValueTypes';
+import { Command } from './Command';
 
 describe('/model/calculator', () => {
   test('source result is the source value', () => {
-    const result = calculate({ type: ValueTypes.SOURCE, values: [1, 0, 1] }, 0);
+    const result = calculate({ type: Command.SOURCE, values: [1, 0, 1] }, 0);
     expect(result).toEqual([1, 0, 1]);
   });
 
   test('clock result is the clock value passed in', () => {
-    const result0 = calculate({ type: ValueTypes.CLOCK, values: [] }, 0);
+    const result0 = calculate({ type: Command.CLOCK, values: [] }, 0);
     expect(result0).toEqual([0]);
     expect(result0[0]).toBe(0);
 
-    const result1 = calculate({ type: ValueTypes.CLOCK, values: [] }, 1);
+    const result1 = calculate({ type: Command.CLOCK, values: [] }, 1);
     expect(result1).toEqual([1]);
   });
 
@@ -20,8 +20,8 @@ describe('/model/calculator', () => {
     test('opposite of source', () => {
       const result = calculate(
         {
-          type: ValueTypes.NOT,
-          values: [{ type: ValueTypes.SOURCE, values: [1, 0, 0, 1] }],
+          type: Command.NOT,
+          values: [{ type: Command.SOURCE, values: [1, 0, 0, 1] }],
         },
         0
       );
@@ -31,8 +31,8 @@ describe('/model/calculator', () => {
     test('opposite of clock', () => {
       const result = calculate(
         {
-          type: ValueTypes.NOT,
-          values: [{ type: ValueTypes.CLOCK, values: [] }],
+          type: Command.NOT,
+          values: [{ type: Command.CLOCK, values: [] }],
         },
         0
       );
@@ -42,13 +42,13 @@ describe('/model/calculator', () => {
     test('opposite of gate input', () => {
       const result = calculate(
         {
-          type: ValueTypes.NOT,
+          type: Command.NOT,
           values: [
             {
-              type: ValueTypes.AND,
+              type: Command.AND,
               values: [
-                { type: ValueTypes.CLOCK, values: [] },
-                { type: ValueTypes.SOURCE, values: [1] },
+                { type: Command.CLOCK, values: [] },
+                { type: Command.SOURCE, values: [1] },
               ],
             },
           ],
@@ -63,10 +63,10 @@ describe('/model/calculator', () => {
     test('sources are not changed by clock', () => {
       const result110 = calculate(
         {
-          type: ValueTypes.OR,
+          type: Command.OR,
           values: [
-            { type: ValueTypes.SOURCE, values: [0, 1, 0] },
-            { type: ValueTypes.SOURCE, values: [1, 1, 0] },
+            { type: Command.SOURCE, values: [0, 1, 0] },
+            { type: Command.SOURCE, values: [1, 1, 0] },
           ],
         },
         1
@@ -75,10 +75,10 @@ describe('/model/calculator', () => {
 
       const result11 = calculate(
         {
-          type: ValueTypes.OR,
+          type: Command.OR,
           values: [
-            { type: ValueTypes.SOURCE, values: [0, 0] },
-            { type: ValueTypes.SOURCE, values: [1, 1] },
+            { type: Command.SOURCE, values: [0, 0] },
+            { type: Command.SOURCE, values: [1, 1] },
           ],
         },
         0
@@ -91,10 +91,10 @@ describe('/model/calculator', () => {
     test('both on is off', () => {
       const result = calculate(
         {
-          type: ValueTypes.XOR,
+          type: Command.XOR,
           values: [
-            { type: ValueTypes.SOURCE, values: [1] },
-            { type: ValueTypes.SOURCE, values: [1] },
+            { type: Command.SOURCE, values: [1] },
+            { type: Command.SOURCE, values: [1] },
           ],
         },
         1
@@ -105,10 +105,10 @@ describe('/model/calculator', () => {
     test('both off is off', () => {
       const result = calculate(
         {
-          type: ValueTypes.XOR,
+          type: Command.XOR,
           values: [
-            { type: ValueTypes.SOURCE, values: [0] },
-            { type: ValueTypes.SOURCE, values: [0] },
+            { type: Command.SOURCE, values: [0] },
+            { type: Command.SOURCE, values: [0] },
           ],
         },
         1
@@ -119,10 +119,10 @@ describe('/model/calculator', () => {
     test('one on is on', () => {
       const result = calculate(
         {
-          type: ValueTypes.XOR,
+          type: Command.XOR,
           values: [
-            { type: ValueTypes.SOURCE, values: [0] },
-            { type: ValueTypes.SOURCE, values: [1] },
+            { type: Command.SOURCE, values: [0] },
+            { type: Command.SOURCE, values: [1] },
           ],
         },
         1
@@ -135,10 +135,10 @@ describe('/model/calculator', () => {
     test('with clock on', () => {
       const result = calculate(
         {
-          type: ValueTypes.AND,
+          type: Command.AND,
           values: [
-            { type: ValueTypes.CLOCK, values: [] },
-            { type: ValueTypes.SOURCE, values: [1] },
+            { type: Command.CLOCK, values: [] },
+            { type: Command.SOURCE, values: [1] },
           ],
         },
         1
@@ -149,10 +149,10 @@ describe('/model/calculator', () => {
     test('with clock off', () => {
       const result = calculate(
         {
-          type: ValueTypes.AND,
+          type: Command.AND,
           values: [
-            { type: ValueTypes.CLOCK, values: [] },
-            { type: ValueTypes.SOURCE, values: [1] },
+            { type: Command.CLOCK, values: [] },
+            { type: Command.SOURCE, values: [1] },
           ],
         },
         0
@@ -163,19 +163,19 @@ describe('/model/calculator', () => {
     test('complicated inputs', () => {
       const result = calculate(
         {
-          type: ValueTypes.AND,
+          type: Command.AND,
           values: [
             {
-              type: ValueTypes.OR,
+              type: Command.OR,
               values: [
                 {
-                  type: ValueTypes.NOT,
-                  values: [{ type: ValueTypes.CLOCK, values: [] }],
+                  type: Command.NOT,
+                  values: [{ type: Command.CLOCK, values: [] }],
                 },
-                { type: ValueTypes.CLOCK, values: [] },
+                { type: Command.CLOCK, values: [] },
               ],
             },
-            { type: ValueTypes.SOURCE, values: [1] },
+            { type: Command.SOURCE, values: [1] },
           ],
         },
         1

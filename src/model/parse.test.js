@@ -1,8 +1,8 @@
 import { parse } from './parse';
-import * as ValueTypes from './ValueTypes';
+import { Command } from './Command';
 
 const testSourceVal = (type, values, val) => {
-  expect(type).toBe(ValueTypes.SOURCE);
+  expect(type).toBe(Command.SOURCE);
   expect(values.length).toBe(1);
   expect(values[0]).toBe(val);
 };
@@ -33,7 +33,7 @@ describe('/model/parse', () => {
   describe('gate', () => {
     test('with source inputs', () => {
       const { type, values } = parse('(and 0 1)');
-      expect(type).toBe(ValueTypes.AND);
+      expect(type).toBe(Command.AND);
       expect(values.length).toBe(2);
       values.forEach(({ type, values }, idx) => {
         testSourceVal(type, values, idx);
@@ -42,18 +42,18 @@ describe('/model/parse', () => {
 
     test('with gate inputs', () => {
       const { type, values } = parse('(or (and 1 (not 0)) (xor 1 1))');
-      expect(type).toBe(ValueTypes.OR);
+      expect(type).toBe(Command.OR);
       expect(values.length).toBe(2);
-      expect(values[0].type).toBe(ValueTypes.AND);
+      expect(values[0].type).toBe(Command.AND);
       expect(values[0].values.length).toBe(2);
       testSourceVal(values[0].values[0].type, values[0].values[0].values, 1);
-      expect(values[0].values[1].type).toBe(ValueTypes.NOT);
+      expect(values[0].values[1].type).toBe(Command.NOT);
       testSourceVal(
         values[0].values[1].values[0].type,
         values[0].values[1].values[0].values,
         0
       );
-      expect(values[1].type).toBe(ValueTypes.XOR);
+      expect(values[1].type).toBe(Command.XOR);
       testSourceVal(values[1].values[0].type, values[1].values[0].values, 1);
     });
   });
@@ -61,7 +61,7 @@ describe('/model/parse', () => {
   describe('clock', () => {
     test('has no values', () => {
       const { type, values } = parse('(clk)');
-      expect(type).toBe(ValueTypes.CLOCK);
+      expect(type).toBe(Command.CLOCK);
       expect(values.length).toBe(0);
     });
   });

@@ -1,8 +1,8 @@
-import * as ValueTypes from '../../model/ValueTypes';
+import { Command } from '../../model/Command';
 import { calcMargins } from './calcMargins';
 
 const SOURCE_0 = {
-  type: ValueTypes.SOURCE,
+  type: Command.SOURCE,
   values: [0],
 };
 
@@ -15,7 +15,7 @@ describe('/view/utils/calcMargins', () => {
 
   test('one gate adds to margins', () => {
     const AND = {
-      type: ValueTypes.AND,
+      type: Command.AND,
       values: [SOURCE_0, SOURCE_0],
     };
     const { marginTop, marginBottom } = calcMargins(AND);
@@ -25,7 +25,7 @@ describe('/view/utils/calcMargins', () => {
 
   test('not gate gets same margins as source child', () => {
     const NOT = {
-      type: ValueTypes.NOT,
+      type: Command.NOT,
       values: [SOURCE_0, SOURCE_0],
     };
     const { marginTop, marginBottom } = calcMargins(NOT);
@@ -35,10 +35,10 @@ describe('/view/utils/calcMargins', () => {
 
   test('not gate gets same margins as gate child', () => {
     const NOT = {
-      type: ValueTypes.NOT,
+      type: Command.NOT,
       values: [
         {
-          type: ValueTypes.AND,
+          type: Command.AND,
           values: [SOURCE_0, SOURCE_0],
         },
         SOURCE_0,
