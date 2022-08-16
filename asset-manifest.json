@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.db1d8262.css",
-  "main.css.map": "static/css/main.db1d8262.css.map",
-  "main.js": "static/js/main.ded7fbcb.js",
-  "main.js.map": "static/js/main.ded7fbcb.js.map"
+  "files": {
+    "main.css": "/hardware-simulator/static/css/main.2b55c0d1.css",
+    "main.js": "/hardware-simulator/static/js/main.78e7bc74.js",
+    "index.html": "/hardware-simulator/index.html",
+    "main.2b55c0d1.css.map": "/hardware-simulator/static/css/main.2b55c0d1.css.map",
+    "main.78e7bc74.js.map": "/hardware-simulator/static/js/main.78e7bc74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b55c0d1.css",
+    "static/js/main.78e7bc74.js"
+  ]
 }
