@@ -42,6 +42,7 @@ const LogicInput = () => {
         value={formContent}
         onChange={onChange}
         className="mr-2"
+        placeholder="e.x. (and 1 1)"
       />
       <Button variant="light" type="submit">
         View
