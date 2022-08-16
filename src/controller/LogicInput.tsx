@@ -35,7 +35,7 @@ const useLogicInput = () => {
 const LogicInput = () => {
   const { formContent, onChange, onSubmit } = useLogicInput();
   return (
-    <Form className="LogicInput p-2" onSubmit={onSubmit}>
+    <Form className="LogicInput" onSubmit={onSubmit}>
       <Form.Control
         type="text"
         id="logic"
