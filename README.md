@@ -17,7 +17,8 @@ the time selector to the right of the logic input.
 
 Current allowed gates are `and`, `or`, `not`, and `xor`. Inputs can be
 single- or multi-bit inputs of `0`s and `1`s, but gates cannot take inputs
-of different bit lengths.
+of different bit lengths. `and`, `or`, and `xor` can accept 2 or more inputs,
+while `not` can accept only a single input.
 
 Sample strings:
 
@@ -41,6 +42,11 @@ Sample strings:
   - [x] Gate
 - [x] Control the clock timing with a new input (how many seconds between each clock tick)
   - [x] Form input
+- [ ] Bit splitter
+  - [ ] Parser
+  - [ ] Calculator
+  - [ ] Gate
+  - [ ] Updated unit tests
 - [ ] Register (takes in the value to save and value that controls when that save happens) - e.g. (and (reg (clk) (clk)))
   - [ ] Parser
   - [ ] Calculator
