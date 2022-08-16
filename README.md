@@ -42,11 +42,6 @@ Sample strings:
   - [x] Gate
 - [x] Control the clock timing with a new input (how many seconds between each clock tick)
   - [x] Form input
-- [ ] Bit splitter
-  - [ ] Parser
-  - [ ] Calculator
-  - [ ] Gate
-  - [ ] Updated unit tests
 - [ ] Register (takes in the value to save and value that controls when that save happens) - e.g. (and (reg (clk) (clk)))
   - [ ] Parser
   - [ ] Calculator
@@ -59,3 +54,10 @@ Sample strings:
 - [ ] Create logic functions - e.g. ((fn (x y) (and x y)) x y)
   - [ ] Parser
   - [ ] Calculator
+- [ ] Bit splitter[^1]
+  - [ ] Parser
+  - [ ] Calculator
+  - [ ] Gate
+  - [ ] Updated unit tests
+
+[^1]: This seems like a relatively simple task to implement, but my current implementation leads me to believe that a split input will result in something more like a list of inputs, which would then require the parser to be able to handle a list, which in turn would typically require variables (to back reference), a slew of built in commands (e.g. `first` and `rest`), and the view to represent them (how the fuck do you make the wires know what variable to connect to???)
