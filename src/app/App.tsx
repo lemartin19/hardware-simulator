@@ -1,12 +1,13 @@
 import './App.css';
 import { useMemo, useEffect } from 'react';
-import { Workspace } from '../view/Workspace';
-import { calculate } from '../model/calculator';
-import { MaybeError } from './MaybeError';
 import { useDispatch, useSelector } from 'react-redux';
-import { getClockLength, getClockValue, tick } from '../store/clock';
-import { getParsed } from '../store/parsed';
 import Controller from '../controller/Controller';
+import { calculate } from '../model/calculator';
+import { getClockLength, getClockValue, tick } from '../store/clock';
+import { Workspace } from '../view/Workspace';
+import { getParsed } from '../store/parsed';
+import { GitHubLink } from './GitHubLink';
+import { MaybeError } from './MaybeError';
 
 const useClock = () => {
   const dispatch = useDispatch();
@@ -43,9 +44,11 @@ export const App = () => {
   return (
     <div className="App">
       <MaybeError>{error}</MaybeError>
+      <GitHubLink />
       <Workspace parsed={parsed} result={result} />
       <Controller />
     </div>
   );
 };
 App.displayName = 'App';
+App.useComponent = useApp;

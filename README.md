@@ -7,7 +7,7 @@ Start the simulator with `npm start`
 
 # Using the simulator
 
-<img src="./example.png" alt="Sample screenshot of how the app is used" />
+<img src="./assets/example.png" alt="Sample screenshot of how the app is used" />
 
 An input at the bottom will accept logical strings in a Lisp-like
 command format. Pressing the `View` button will allow a properly
