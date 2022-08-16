@@ -20,7 +20,10 @@ const useClockLength = () => {
 const ClockLength = () => {
   const { clockLength, onChange } = useClockLength();
   return (
-    <Form>
+    <Form className="d-flex flex-row">
+      <Form.Label className="pr-2 mb-0 text-nowrap">
+        Clock Length (seconds):
+      </Form.Label>
       <Form.Control as="select" onChange={onChange} value={clockLength} custom>
         <option>0.1</option>
         <option>0.25</option>
