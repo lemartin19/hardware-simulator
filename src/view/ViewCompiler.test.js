@@ -19,7 +19,7 @@ describe('/view/ViewCompiler', () => {
   describe('gate', () => {
     test('is added to the document', () => {
       const and = {
-        type: ValueTypes.AND,
+        type: Command.AND,
         values: [SOURCE0, SOURCE0],
       };
       render(<ViewCompiler parsed={and} />);

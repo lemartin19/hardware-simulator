@@ -10,7 +10,7 @@ test('renders nothing if no parsed value', () => {
 
 test('renders view if there is a parsed value', () => {
   const { container } = render(
-    <Workspace parsed={{ type: ValueTypes.SOURCE, values: [0] }} result="0" />
+    <Workspace parsed={{ type: Command.SOURCE, values: [0] }} result="0" />
   );
   expect(container.children.length).toBe(1);
   expect(container.firstChild.firstChild).not.toBeNull();

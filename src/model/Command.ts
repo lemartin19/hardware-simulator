@@ -5,4 +5,5 @@ export enum Command {
   NOT = 'not',
   XOR = 'xor',
   CLOCK = 'clk',
+  SPLIT = 'split',
 }
